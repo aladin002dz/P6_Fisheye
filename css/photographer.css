@@ -1,27 +1,24 @@
+*, ::before, ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+}
+
+/* Modal */
+
 #contact_modal {
     display: none;
 }
 
-.photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
-}
-
-.contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
 .modal {
+    position: fixed;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
     border-radius: 5px;
     background-color: #DB8876;
     width: 50%;
@@ -30,7 +27,6 @@
     align-items: center;
     justify-content: space-between;
     padding: 35px;
-    margin: auto;
 }
 
 .modal header {
@@ -42,7 +38,7 @@
     cursor: pointer;
 }
 
-.modal header h2 {
+.modal header h1 {
     font-size: 64px;
     font-weight: normal;
     text-align: center;
@@ -58,6 +54,7 @@ form {
 form label {
     color: #312E2E;
     font-size: 36px;
+    margin-bottom: 5px;
 }
 
 form div {
@@ -68,9 +65,104 @@ form div {
     margin-bottom: 26px;
 }
 
-form input {
+form input, form textarea {
     width: 100%;
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+form input {
+    margin-bottom: 10px;
+}
+
+form textarea {
+    height: 170px;
+    resize: none;
+}
+
+/* Header */
+
+header {
+    display: flex;
+    align-items: center;
+    height: 90px;
+}
+
+.logo {
+    height: 50px;
+    margin-left: 100px;
+}
+
+/* Photograph header */
+
+.photograph-header {
+    background-color: #FAFAFA;
+    height: 300px;
+    margin: 0 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.contact_button {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.photograph-name {
+    font-size: 64px;
+    color: #D3573C;
+}
+
+.photograph-localisation {
+    font-size: 24px;
+    color: #901c1c;
+    margin-bottom: 20px;
+}
+
+.photograph-tagline {
+    font-size: 18px;
+    color: #525252;
+}
+
+.portrait-container {
+    overflow: hidden;
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+}
+
+.portrait-container img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    scale: 1.3;
+}
+
+
+/* Main */
+
+.photograph-price {
+    position: fixed;
+    bottom: 0;
+    right: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 380px;
+    height: 65px;
+    background-color: #DB8876;
+    font-size: 24px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
