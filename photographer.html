@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="./css/photographer.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -8,29 +8,32 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header>
+    <header id="header" aria-hidden="false">
       <a href="./index.html">
         <img src="assets/images/logo.png" class="logo" />
       </a>
     </header>
-    <main id="main">
+    <main id="main" aria-hidden="false">
       <section class="photograph-header">
-        <button aria-label="Ouvrir le formulaire de contact" class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button aria-label="Ouvrir le formulaire de contact" class="contact-btn">Contactez-moi</button>
       </section>
 
       <section class="factory-media">
-        
+
       </section>
     </main>
 
-    <div id="contact_modal">
+    <div id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="modal-title">
 			<div class="modal">
 				<header>
-          <h1>Contactez-moi</h1>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <h1 id="modal-title">Contactez-moi</h1>
+          <button class="close-btn" aria-label="Fermer le formulaire">
+            <img src="assets/icons/close.svg"/>
+          </button>
         </header>
 				<form>
 					<div>
+            <h2 class="photographer-name"></h2>
 						<label for="first-name">Prénom</label>
 						<input name="first-name" id="first-name" type="text">
 						<label for="last-name">Nom</label>
@@ -40,7 +43,15 @@
             <label for="message">Votre message</label>
             <textarea name="message" id="message"></textarea>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button class="submit-btn">Envoyer</button>
+          <p class="error-submit">Veuillez remplir tous les champs</p>
+
+          <div class="validation-submit">
+            <button class="validation-close-btn close-btn" aria-label="Fermer le formulaire">
+              <img src="assets/icons/close.svg"/>
+            </button>
+            <p>Nous avons bien reçu votre message !</p>
+          </div>
 				</form>
 			</div>
 		</div>
@@ -49,3 +60,4 @@
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>
+

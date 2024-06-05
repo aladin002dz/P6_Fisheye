@@ -12,6 +12,7 @@ body {
 
 #contact_modal {
     display: none;
+    position: relative;
 }
 
 .modal {
@@ -51,6 +52,12 @@ form {
     align-items: flex-start;
 }
 
+form h2 {
+    font-size: 64px;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
 form label {
     color: #312E2E;
     font-size: 36px;
@@ -73,12 +80,54 @@ form input, form textarea {
 }
 
 form input {
+    padding-left: 10px;
+    font-size: 24px;
     margin-bottom: 10px;
 }
 
 form textarea {
     height: 170px;
     resize: none;
+    padding: 10px 0 0 10px;
+    font-size: 24px;
+}
+
+.error-submit {
+    display: none;
+    margin-top: 20px;
+    font-size: 20px;
+    color: #901C1C;
+}
+
+.validation-submit {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #DB8876;
+}
+
+.validation-submit p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 50px;
+}
+
+.close-btn {
+    border: none;
+    background: none;
+}
+
+.validation-close-btn {
+    position: absolute;
+    top: 60px;
+    right: 35px;
+    cursor: pointer;
 }
 
 /* Header */
@@ -106,7 +155,7 @@ header {
     padding: 0 50px;
 }
 
-.contact_button {
+.contact-btn, .submit-btn {
     font-size: 20px;
     font-weight: bold;
     color: white;

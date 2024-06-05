@@ -40,7 +40,6 @@ function displayPhotographerData(photographerData) {
     const portrait = document.createElement( 'img' );
     portrait.src = `assets/photographers/${photographerData.portrait}`;
     portrait.setAttribute("alt", `Photo de ${photographerData.name}`);
-    portrait.setAttribute('aria-label', `Photo de ${photographerData.name}`);
 
     photographHeader.appendChild(textContent);
     textContent.appendChild(name);
@@ -50,9 +49,13 @@ function displayPhotographerData(photographerData) {
     portraitContainer.appendChild(portrait);
 
     // Insère textContent avant le bouton de contact
-    const button = document.querySelector('.contact_button');
+    const button = document.querySelector('.contact-btn');
     button.parentNode.insertBefore(textContent, button);
 
+    // Form
+    const photographerName = document.querySelector('.photographer-name');
+    photographerName.textContent = photographerData.name;
+    
     // Main
     const main = document.querySelector('main');
     const price = document.createElement( 'p' );
@@ -68,8 +71,6 @@ async function init() {
     const url = new URL(currentURL);
     const searchParams = url.searchParams;
     const photographerId = searchParams.get('id');
-
-    console.log('Photographer ID:', photographerId);
 
     const photographerData = await getPhotographerData(photographerId);
     displayPhotographerData(photographerData);
