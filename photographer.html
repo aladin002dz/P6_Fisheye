@@ -8,19 +8,31 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header id="header" aria-hidden="false">
-      <a href="./index.html">
-        <img src="assets/images/logo.png" class="logo" />
+    <header id="header">
+      <a href="./index.html" aria-hidden="false" class="lien-logo">
+        <img src="assets/images/logo.png" class="logo" alt="Accueil Fisheye" />
       </a>
     </header>
     <main id="main" aria-hidden="false">
+
       <section class="photograph-header">
         <button aria-label="Ouvrir le formulaire de contact" class="contact-btn">Contactez-moi</button>
       </section>
 
-      <section class="factory-media">
+      <section class="media-container">
+        <div class="sort-by">
+          <h3>Trier par</h3>
+            <select name="sort" id="sort">
+              <option value="popularity">Popularité</option>
+              <option value="date">Date</option>
+              <option value="title">Titre</option>
+            </select>
+        </div>
+        <div class="gallery"></div>
 
       </section>
+
+</div>
     </main>
 
     <div id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="modal-title">
@@ -28,7 +40,7 @@
 				<header>
           <h1 id="modal-title">Contactez-moi</h1>
           <button class="close-btn" aria-label="Fermer le formulaire">
-            <img src="assets/icons/close.svg"/>
+            <img src="assets/icons/close.svg" alt="Icone de fermeture" role="presentation"/>
           </button>
         </header>
 				<form>
@@ -48,7 +60,7 @@
 
           <div class="validation-submit">
             <button class="validation-close-btn close-btn" aria-label="Fermer le formulaire">
-              <img src="assets/icons/close.svg"/>
+              <img src="assets/icons/close.svg" alt="Icone de fermeture" role="presentation">
             </button>
             <p>Nous avons bien reçu votre message !</p>
           </div>
@@ -56,6 +68,7 @@
 			</div>
 		</div>
 
+    <script src="./scripts/templates/photographerPage.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>

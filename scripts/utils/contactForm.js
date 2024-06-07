@@ -5,7 +5,7 @@ const closeBtn = document.querySelectorAll(".close-btn");
 const form = document.querySelector("form");
 const validationSubmit = document.querySelector(".validation-submit");
 const errorMessage = document.querySelector(".error-submit");
-const header = document.getElementById("header")
+const logo = document.getElementById(".lien-logo")
 const main = document.getElementById("main");
 
 // Événements ouverture/fermeture modal
@@ -13,11 +13,12 @@ contactBtn.addEventListener("click", openModal);
 closeBtn.forEach(btn => btn.addEventListener("click", closeModal));
 
 // Fermeture modal si clic en dehors
-window.addEventListener('click', (event) => {
+document.addEventListener('click', (event) => {
     let clickInsideModal = modal.contains(event.target);
     let clickOnContactBtn = contactBtn.contains(event.target);
+    let modalIsVisible = modal.style.display !== 'none';
 
-    if (!clickInsideModal && !clickOnContactBtn) {
+    if (!clickInsideModal && !clickOnContactBtn && modalIsVisible) {
         closeModal();
     }
 });
@@ -27,7 +28,8 @@ function openModal() {
 	modal.style.display = "block";
     modal.setAttribute("aria-hidden", "false");
     main.setAttribute("aria-hidden", "true");
-    header.setAttribute("aria-hidden", "true");
+    logo.setAttribute("aria-hidden", "true");
+    logo.tabIndex = -1;
     closeBtn[0].focus();
 }
 
@@ -37,7 +39,7 @@ function closeModal() {
     errorMessage.style.display = "none";
     modal.setAttribute("aria-hidden", "true");
     main.setAttribute("aria-hidden", "false");
-    header.setAttribute("aria-hidden", "false");
+    logo.setAttribute("aria-hidden", "false");
     form.reset();
     contactBtn.focus();
 }
