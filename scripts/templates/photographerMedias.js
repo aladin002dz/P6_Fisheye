@@ -25,7 +25,7 @@ function displayPhotographerData(photographerData) {
 
     const portrait = document.createElement( 'img' );
     portrait.src = `assets/photographers/${photographerData.portrait}`;
-    portrait.setAttribute("alt", `Photo de ${photographerData.name}`);
+    portrait.setAttribute('alt', `Photo de ${photographerData.name}`);
 
     photographHeader.appendChild(textContent);
     textContent.appendChild(name);
@@ -62,7 +62,8 @@ function MediaFactory (media, index) {
         const image = document.createElement('img');
         image.src = `assets/photos/${media.image}`;
         image.alt = media.title;
-        image.setAttribute("data-index", index);
+        image.setAttribute('data-index', index);
+        image.setAttribute('aria-label', 'Cliquez pour agrandir');
         image.classList.add('medias');
         return image;
     }
@@ -70,7 +71,8 @@ function MediaFactory (media, index) {
         const video = document.createElement('video');
         video.src = `assets/photos/${media.video}`;
         video.setAttribute('aria-label', media.title);
-        video.setAttribute("data-index", index);
+        video.setAttribute('data-index', index);
+        video.setAttribute('aria-label', 'Cliquez pour agrandir');
         video.classList.add('medias');
         return video;
     }
@@ -85,14 +87,14 @@ function MediaFactory (media, index) {
 function cardDom (media, index) {
     const mediaElement = new MediaFactory(media, index);
     const card = 
-    `<div class="card">
+    `<div class='card'>
     ${mediaElement.outerHTML}
-    <div class="card-content">
+    <div class='card-content'>
     <h2>${media.title}</h2>
-    <div class="button-container">
-        <p aria-label="Nombre de likes" class="like-card-content" data-id="${media.id}">${media.likes}</p>
-        <button aria-label="Like" class="like-btn" data-id="${media.id}">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+    <div class='button-container'>
+        <p aria-label='Nombre de likes' class='like-card-content' data-id='${media.id}'>${media.likes}</p>
+        <button aria-label='Like' class='like-btn' data-id='${media.id}'>
+        <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-heart'><path d='M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z'/></svg>
         </button>
         </div>
         </div>
@@ -113,7 +115,7 @@ function getTotalLikes(photographerMedia) {
 // Fonction d'ajout des likes au clic
 function addLikeEventListeners(photographerMedia) {
     photographerMedia.forEach((media) => {
-        const likeButton = document.querySelector(`.like-btn[data-id="${media.id}"]`);
+        const likeButton = document.querySelector(`.like-btn[data-id='${media.id}']`);
         const likeButtonSvg = likeButton.querySelector('svg');
         likeButton.dataset.liked = 'false';
         likeButton.addEventListener('click', () => {
@@ -129,15 +131,15 @@ function addLikeEventListeners(photographerMedia) {
             }
 
             // Mis à jour des likes de la card
-            const likeDisplay = document.querySelector(`.like-card-content[data-id="${media.id}"]`);
+            const likeDisplay = document.querySelector(`.like-card-content[data-id='${media.id}']`);
             likeDisplay.textContent = media.likes;
         
             // Mis à jour du total des likes
             let totalLikes = getTotalLikes(photographerMedia);
-            const likesElement = document.querySelector(".likes-element");
+            const likesElement = document.querySelector('.likes-element');
             likesElement.textContent = totalLikes;
         });
-        // Mettez à jour l'état initial du bouton en fonction de l'état "liked" de l'objet "media"
+        // Mettez à jour l'état initial du bouton en fonction de l'état 'liked' de l'objet 'media'
         if (media.liked) {
             likeButtonSvg.classList.add('liked');
         } else {
@@ -154,13 +156,13 @@ function displayPhotographerMedia(photographerMedia) {
     
     photographerMedia.forEach((media, index) => {
         const cardElement = cardDom(media, index);
-        gallery.insertAdjacentHTML("beforeend", cardElement);
+        gallery.insertAdjacentHTML('beforeend', cardElement);
     });
 
     const allMedias = document.querySelectorAll('.medias');
     allMedias.forEach(media => {
         media.addEventListener('click', (event) => {
-            openLightbox(event, media.getAttribute("data-index"));
+            openLightbox(event, media.getAttribute('data-index'));
         });
     }
     )
@@ -184,7 +186,7 @@ function displayPhotographerMedia(photographerMedia) {
     likesElement.classList.add('likes-element');
     likesElement.setAttribute('aria-label', 'Nombre total de likes');
     const svgElement = document.createElement('svg'); 
-    svgElement.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>`
+    svgElement.innerHTML = `<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-heart'><path d='M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z'/></svg>`
     likesElement.textContent = `${totalLikes}`;
 
     likesContent.appendChild(likesElement);

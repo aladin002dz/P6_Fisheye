@@ -8,7 +8,7 @@
 
     // Créer une section et y intègre chaque card des photographes
     async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section");
+        const photographersSection = document.querySelector('.photographer_section');
 
         photographers.forEach((photographer) => {
             photographersSection.appendChild(photographerTemplate(photographer));
