@@ -2,28 +2,28 @@
 function displayPhotographerData(photographerData) {
     // Header
     const photographHeader = document.querySelector('.photograph-header');
-    const textContent = document.createElement( 'div' );
+    const textContent = document.createElement('div');
     textContent.classList.add('text-content');
 
-    const name = document.createElement( 'h1' );
+    const name = document.createElement('h1');
     name.textContent = photographerData.name;
     name.classList.add('photograph-name');
     name.setAttribute('aria-label', 'Nom du photographe');
 
-    const localisation = document.createElement( 'p' );
+    const localisation = document.createElement('p');
     localisation.textContent = `${photographerData.city}, ${photographerData.country}`;
     localisation.classList.add('photograph-localisation');
     localisation.setAttribute('aria-label', 'Localisation du photographe');
 
-    const tagline = document.createElement( 'p' )
+    const tagline = document.createElement('p')
     tagline.textContent = photographerData.tagline;
     tagline.classList.add('photograph-tagline');
     tagline.setAttribute('aria-label', 'Slogan du photographe');
 
-    const portraitContainer = document.createElement( 'div' );
+    const portraitContainer = document.createElement('div');
     portraitContainer.classList.add('portrait-container');
 
-    const portrait = document.createElement( 'img' );
+    const portrait = document.createElement('img');
     portrait.src = `assets/photographers/${photographerData.portrait}`;
     portrait.setAttribute('alt', `Photo de ${photographerData.name}`);
 
@@ -41,12 +41,12 @@ function displayPhotographerData(photographerData) {
     // Form
     const photographerName = document.querySelector('.photographer-name');
     photographerName.textContent = photographerData.name;
-    
+
     // Main
     const main = document.querySelector('main');
-    const photographInsert = document.createElement( 'div' );
+    const photographInsert = document.createElement('div');
     photographInsert.classList.add('photograph-insert');
-    const price = document.createElement( 'p' );
+    const price = document.createElement('p');
     price.textContent = `${photographerData.price}€/jour`;
     price.classList.add('photograph-price');
     price.setAttribute('aria-label', 'Tarif du photographe');
@@ -57,8 +57,8 @@ function displayPhotographerData(photographerData) {
 
 
 // Créer une nouvelle instance d'un objet Image ou Video. 
-function MediaFactory (media, index) {
-    function Image (media, index) {
+function MediaFactory(media, index) {
+    function Image(media, index) {
         const image = document.createElement('img');
         image.src = `assets/photos/${media.image}`;
         image.alt = media.title;
@@ -67,7 +67,7 @@ function MediaFactory (media, index) {
         image.classList.add('medias');
         return image;
     }
-    function Video (media, index) {
+    function Video(media, index) {
         const video = document.createElement('video');
         video.src = `assets/photos/${media.video}`;
         video.setAttribute('aria-label', media.title);
@@ -76,18 +76,18 @@ function MediaFactory (media, index) {
         video.classList.add('medias');
         return video;
     }
-  if (media.image) {
-    return new Image(media, index)
-  } else {
-    return new Video(media, index)
-  }
+    if (media.image) {
+        return new Image(media, index)
+    } else {
+        return new Video(media, index)
+    }
 }
 
 // Création de la carte pour chaque média
-function cardDom (media, index) {
+function cardDom(media, index) {
     const mediaElement = new MediaFactory(media, index);
-    const card = 
-    `<div class='card'>
+    const card =
+        `<div class='card'>
     ${mediaElement.outerHTML}
     <div class='card-content'>
     <h2>${media.title}</h2>
@@ -99,7 +99,7 @@ function cardDom (media, index) {
         </div>
         </div>
         </div>`
-        return card;
+    return card;
 }
 
 
@@ -133,7 +133,7 @@ function addLikeEventListeners(photographerMedia) {
             // Mis à jour des likes de la card
             const likeDisplay = document.querySelector(`.like-card-content[data-id='${media.id}']`);
             likeDisplay.textContent = media.likes;
-        
+
             // Mis à jour du total des likes
             let totalLikes = getTotalLikes(photographerMedia);
             const likesElement = document.querySelector('.likes-element');
@@ -147,13 +147,13 @@ function addLikeEventListeners(photographerMedia) {
         }
     });
 }
-        
+
 // Affichage des médias du photographe
 function displayPhotographerMedia(photographerMedia) {
-    
+
     const gallery = document.querySelector('.gallery');
     gallery.innerHTML = '';
-    
+
     photographerMedia.forEach((media, index) => {
         const cardElement = cardDom(media, index);
         gallery.insertAdjacentHTML('beforeend', cardElement);
@@ -166,11 +166,11 @@ function displayPhotographerMedia(photographerMedia) {
         });
     }
     )
-    
+
     // Ajout du total des likes
     let totalLikes = getTotalLikes(photographerMedia);
     const photographInsert = document.querySelector('.photograph-insert')
-    
+
     // Vérifie si likesContent existe déjà pour éviter les dupplications à chaque tri
     let likesContent = photographInsert.querySelector('.likes-content');
     if (!likesContent) {
@@ -185,7 +185,7 @@ function displayPhotographerMedia(photographerMedia) {
     const likesElement = document.createElement('p');
     likesElement.classList.add('likes-element');
     likesElement.setAttribute('aria-label', 'Nombre total de likes');
-    const svgElement = document.createElement('svg'); 
+    const svgElement = document.createElement('svg');
     svgElement.innerHTML = `<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-heart'><path d='M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z'/></svg>`
     likesElement.textContent = `${totalLikes}`;
 

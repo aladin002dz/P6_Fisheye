@@ -26,7 +26,7 @@ document.addEventListener('click', (event) => {
 
 // Fonctions ouverture/fermeture modal
 function openModal() {
-	modal.style.display = 'block';
+    modal.style.display = 'block';
     modal.setAttribute('aria-hidden', 'false');
     main.setAttribute('aria-hidden', 'true');
     header.setAttribute('aria-hidden', 'true');
@@ -72,7 +72,7 @@ form.addEventListener('submit', (event) => {
         errorMessage.style.display = 'none';
         console.log(formData);
     } else {
-       errorMessage.style.display = 'block';
+        errorMessage.style.display = 'block';
     }
 
 });

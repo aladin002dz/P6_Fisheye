@@ -44,10 +44,10 @@ function openLightbox(event, index) {
         mediaElement.setAttribute('controls', '');
         mediaElement.setAttribute('autoplay', '')
     }
-    lightboxMedia.innerHTML = 
-    `${mediaElement.outerHTML}
+    lightboxMedia.innerHTML =
+        `${mediaElement.outerHTML}
     <p class='media-subtitle'>${currentMedia.title}</p>`;
-    
+
     // Fermeture de la lightbox au clique en dehors et avec échap
     window.addEventListener('click', (event) => {
         if (event.target.classList.contains('lightbox')) {
@@ -81,8 +81,8 @@ function navigateSlide(direction) {
         mediaElement.setAttribute('controls', '');
         mediaElement.setAttribute('autoplay', '')
     }
-    lightboxMedia.innerHTML = 
-    `${mediaElement.outerHTML}
+    lightboxMedia.innerHTML =
+        `${mediaElement.outerHTML}
     <p class='media-subtitle'>${currentMedia.title}</p>`;
 }
 
