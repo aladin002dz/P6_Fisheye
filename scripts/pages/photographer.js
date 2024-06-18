@@ -19,7 +19,7 @@ async function getPhotographerData(photographerId) {
 // Fonction de tri des médias
 let currentPhotographerMedia = null;
 
-const selectSort = document.querySelector('#sort')
+const selectSort = document.querySelector('#sort');
 selectSort.addEventListener('change', (event) => {
     const value = event.target.value;
 

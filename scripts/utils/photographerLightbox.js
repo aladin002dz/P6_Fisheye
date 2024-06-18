@@ -7,14 +7,9 @@ const photographHeader = document.querySelector('.photograph-header');
 const sortBy = document.querySelector('.sort-by');
 const gallery = document.querySelector('.gallery');
 
-
-
-// Fonction de fermeture lightbox
-closeLightboxBtn.addEventListener('click', closeLightbox);
-
 function closeLightbox() {
-    // Accesibilité
     lightbox.classList.remove('active');
+    // Accesibilité
     lightbox.setAttribute('aria-hidden', 'true');
     photographHeader.setAttribute('aria-hidden', 'false');
     header.setAttribute('aria-hidden', 'false');
@@ -25,8 +20,8 @@ function closeLightbox() {
 
 // Fonction ouverture lightbox
 function openLightbox(event, index) {
-    // Accesibilité
     lightbox.classList.add('active');
+    // Accesibilité
     lightbox.setAttribute('aria-hidden', 'false');
     main.setAttribute('aria-hidden', 'true');
     header.setAttribute('aria-hidden', 'true');
@@ -71,6 +66,7 @@ let currentMediaIndex;
 function navigateSlide(direction) {
     currentMediaIndex = direction + Number(currentMediaIndex);
 
+    // Permet de naviguer de manière circulaire
     if (currentMediaIndex < 0) currentMediaIndex = currentPhotographerMedia.length - 1;
     if (currentMediaIndex >= currentPhotographerMedia.length) currentMediaIndex = 0;
 
@@ -97,6 +93,7 @@ document.addEventListener('keydown', function (event) {
             break;
     }
 });
+
 // Navigation avec les boutons
 prevButton.addEventListener('click', function () { navigateSlide(-1); });
 nextButton.addEventListener('click', function () { navigateSlide(1); });

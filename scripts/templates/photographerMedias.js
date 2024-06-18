@@ -42,7 +42,7 @@ function displayPhotographerData(photographerData) {
     const photographerName = document.querySelector('.photographer-name');
     photographerName.textContent = photographerData.name;
 
-    // Main
+    // Insert
     const main = document.querySelector('main');
     const photographInsert = document.createElement('div');
     photographInsert.classList.add('photograph-insert');
@@ -63,6 +63,7 @@ function MediaFactory(media, index) {
         image.src = `assets/photos/${media.image}`;
         image.alt = media.title;
         image.setAttribute('data-index', index);
+        image.setAttribute('tabindex', '0');
         image.setAttribute('aria-label', 'Cliquez pour agrandir');
         image.classList.add('medias');
         return image;
@@ -72,6 +73,7 @@ function MediaFactory(media, index) {
         video.src = `assets/photos/${media.video}`;
         video.setAttribute('aria-label', media.title);
         video.setAttribute('data-index', index);
+        video.setAttribute('tabindex', '0')
         video.setAttribute('aria-label', 'Cliquez pour agrandir');
         video.classList.add('medias');
         return video;
@@ -151,26 +153,31 @@ function addLikeEventListeners(photographerMedia) {
 // Affichage des médias du photographe
 function displayPhotographerMedia(photographerMedia) {
 
+
     const gallery = document.querySelector('.gallery');
     gallery.innerHTML = '';
 
+    // Intègre la card dans la gallery
     photographerMedia.forEach((media, index) => {
         const cardElement = cardDom(media, index);
         gallery.insertAdjacentHTML('beforeend', cardElement);
     });
 
+    // Événements ouverture lightbox
     const allMedias = document.querySelectorAll('.medias');
     allMedias.forEach(media => {
         media.addEventListener('click', (event) => {
             openLightbox(event, media.getAttribute('data-index'));
         });
-    }
-    )
+    })
+
+    // Èvénements fermeture lightbox
+    closeLightboxBtn.addEventListener('click', closeLightbox);
 
     // Ajout du total des likes
     let totalLikes = getTotalLikes(photographerMedia);
     const photographInsert = document.querySelector('.photograph-insert')
-
+    
     // Vérifie si likesContent existe déjà pour éviter les dupplications à chaque tri
     let likesContent = photographInsert.querySelector('.likes-content');
     if (!likesContent) {
@@ -180,7 +187,7 @@ function displayPhotographerMedia(photographerMedia) {
     } else {
         likesContent.innerHTML = '';
     }
-
+    
     // Ajout du total des likes et du svg en html
     const likesElement = document.createElement('p');
     likesElement.classList.add('likes-element');
@@ -191,4 +198,5 @@ function displayPhotographerMedia(photographerMedia) {
 
     likesContent.appendChild(likesElement);
     likesContent.appendChild(svgElement);
+
 }
