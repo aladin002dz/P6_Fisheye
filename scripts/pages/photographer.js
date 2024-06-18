@@ -1,6 +1,6 @@
 // Récupération des datas des photographes
 async function getPhotographerData(photographerId) {
-    const response = await fetch('data/photographers.json');
+    const response = await fetch('./data/photographers.json');
     const data = await response.json();
 
     // Convertit l'ID du photographe en nombre
