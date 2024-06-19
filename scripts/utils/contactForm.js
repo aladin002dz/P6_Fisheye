@@ -70,7 +70,6 @@ form.addEventListener('submit', (event) => {
     if (allFieldsFilled) {
         validationSubmit.style.display = 'block';
         errorMessage.style.display = 'none';
-        console.log(formData);
     } else {
         errorMessage.style.display = 'block';
     }

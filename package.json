@@ -1,0 +1,17 @@
+{
+  "name": "p6_fisheye",
+  "version": "1.0.0",
+  "description": "## Démarrer le projet",
+  "type": "module",
+  "scripts": {
+    "linting": "npx eslint ./scripts/",
+    "linting2": "npx eslint -c ./eslint.config.js ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^9.5.0",
+    "globals": "^15.6.0"
+  }
+}
