@@ -4,8 +4,7 @@
   "description": "## Démarrer le projet",
   "type": "module",
   "scripts": {
-    "linting": "npx eslint ./scripts/",
-    "linting2": "npx eslint -c ./eslint.config.js ."
+    "linting": "npx eslint ./scripts/"
   },
   "keywords": [],
   "author": "",
