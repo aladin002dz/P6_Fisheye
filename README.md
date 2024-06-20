@@ -6,13 +6,13 @@ Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
 
 ## Etapes pour utiliser eslint
 
-1. Créer le gestionnaire de paquets npm
+1. Créer le gestionnaire de paquets npm, ouvrir un terminal et lancer la commande suivante
 
 ```shell
 npm init -y
 ```
 
-2. Installer les dépendances nécessaires
+2. Installer les dépendances nécessaires, dans le terminal lancer la commande suivante
 
 ```shell
 npm install eslint globals --save-dev
@@ -53,7 +53,7 @@ export default [
 }
 ```
 
-5. Lancer le script `linting` pour vérifier que le code est correctement formaté
+5. Lancer le script `linting` pour vérifier que le code est correctement formaté, dans le terminal lancer la commande suivante
 
 ```shell
 npm run linting
